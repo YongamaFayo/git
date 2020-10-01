@@ -1,0 +1,118 @@
+<div class="container">
+
+	<div class="row">
+<div class="col-4"></div>
+		<div class="col-4">
+			<h4 class="mt-2"></h4>
+			<form action="/booking" method="POST">
+				<div class="form-group ">
+					<label for="formGroupExampleInput">Name</label>
+					<input type="text" name="name" value="{{name}}" class="form-control {{bookingNameInvalid.style}}"
+					 id="formGroupExampleInput" placeholder="enter name"
+					{{name}}
+
+					<input type="hidden" name="name" value="{{name}}" >
+					
+					<div id="" class="invalid-feedback">
+						{{!-- Please provide a number of days. --}}
+						{{bookingsNameInvalid.message}}
+					</div>
+				</div>
+				<div class="form-group ">
+					<label for="formGroupExampleInput2">Time for Booking</label>
+					<input type="time" value="{{time}}" name="time" class="form-control {{daysInvalid.style}}"
+						id="formGroupExampleInput2" placeholder="">
+					<div id="" class="invalid-feedback">
+						{{!-- Please provide a number of days. --}}
+						{{daysInvalid.message}}
+					</div>
+
+				</div>
+				<div class="form-group ">
+					<label for="formGroupExampleInput2">Day of Booking </label>
+					<select name="day" class="form-control {{arrivingOnInvalid.style}}" value="{{day}}">
+						<option></option>
+						<option>Monday</option>
+						<option>Tuesday</option>
+						<option>Wednesday</option>
+						<option>Thursday</option>
+						<option>Friday</option>
+					</select>
+					<div id="" class="invalid-feedback">
+						{{!-- Please provide a number of days. --}}
+						{{arrivingOnInvalid.message}}
+					</div>
+				</div>
+				<div class="form-group center">
+					<button class="btn btn-primary">Make Booking</button>
+				</div>
+			</form>
+			<div class="col-4"></div>
+		</div>
+	{{!-- <span>
+       <a href="/reset"> <button class="textClear center" type="submit" onclick="resetAndClear();" name="button">Reset!</button> </a>
+    </span> --}}
+	
+		{{!-- <a href="overview">Next</a> --}}
+		{{!-- <div class="col-8">
+		<h4 class="mt-2"></h4> --}}
+
+		{{!-- <div class="mb-2" >
+			<form action="/filter" method="POST" >
+				<strong>Filter:</strong>	
+				<input class="ml-4" type="radio" name="daysFilter" value="all" > All
+				<input class="ml-4" type="radio" name="daysFilter" value="three" > 3 days or less
+				<input class="ml-4" type="radio" name="daysFilter" value="more" > More 3 days
+				<input class="btn btn-warning btn-sm" type="submit" value="Filter">
+			</form>
+			 --}}
+
+
+		{{!-- </div> --}}
+
+	</div>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Name</th>
+				<th scope="col">Day of Booking</th>
+				<th scope="col">Time for Booking</th>
+				<th scope="col">Ticket Number</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{{#each bookings}}
+			<tr>
+				<th scope="row">{{id}}</th>
+				<td>{{this.name}}</td>
+				<td>{{this.day}}</td>
+				<td>{{this.timeOfGreets}}</td>
+				<td>
+					<a class="btn btn-primary" href="/confirm/{{id}}">View</a>
+				</td>
+			</tr>
+			{{/each}}
+
+		</tbody>
+	</table>
+</div>
+
+
+
+
+
+</div>
+
+<div class="container">
+<div class="btn-holder">
+<a href="/confirm">
+{{!-- <button> CONFIRM</button> --}}
+</a>
+</div>
+</div>
+
+
+</div>
